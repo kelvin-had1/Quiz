@@ -12,7 +12,7 @@ import javax.persistence.Id;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long Id;
 
     @Column(name = "name")
@@ -23,11 +23,16 @@ public class User {
 
     @Column(name = "email")
     private String email;
+    
+    public User(){
 
-    public User(String name, String password, String email){
-        this.email = email;
+    }
+
+    public User(long id, String name, String password, String email) {
+        Id = id;
         this.name = name;
         this.password = password;
+        this.email = email;
     }
 
     public long getId() {
