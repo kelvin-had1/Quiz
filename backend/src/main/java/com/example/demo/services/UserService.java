@@ -24,8 +24,8 @@ public class UserService {
     public ResponseEntity<String> createUser(User user){
         User newUser = user;
 
-        if(getUser(newUser.getId()) != null){
-            return ResponseEntity.status(403).body("User already exist.");
+        if(_userRepository.findByemail(newUser.getEmail()) != null){
+            return ResponseEntity.status(403).body("This email has already been registered.");
         }
 
         _userRepository.save(newUser);
