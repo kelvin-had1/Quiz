@@ -34,5 +34,10 @@ public class UserController {
         return userService.createUser(user);
     }
 
+    @PostMapping("/update")
+    public ResponseEntity<ResponseMessage> updateUser(@RequestBody User user){
+        return userService.updateUser(user);
+    }
+
 
 }

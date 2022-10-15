@@ -24,7 +24,6 @@ public class UserService {
 
     public ResponseEntity<ResponseMessage> createUser(User user){
         User newUser = user;
-
         ResponseMessage responseMessage = new ResponseMessage();
 
         if(_userRepository.findByemail(newUser.getEmail()) != null){
@@ -40,6 +39,23 @@ public class UserService {
 
     }
 
+    public ResponseEntity<ResponseMessage> updateUser(User user){
+        ResponseMessage responseMessage = new ResponseMessage();
+
+        User userToUpdate = user;
+        if(_userRepository.findById(userToUpdate.getId()) != null){
+
+            _userRepository.save(userToUpdate);
+            responseMessage.setMessage("User has updated");
+            return ResponseEntity.ok().body(responseMessage);
+            
+        }
+
+        responseMessage.setMessage("User not found");
+        return ResponseEntity.status(404).body(responseMessage);
+
+
+    }
     
 
     public Optional<User> getUser(long id){
