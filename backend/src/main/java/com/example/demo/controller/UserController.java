@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,16 +13,24 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.domain.ResponseMessage;
 import com.example.demo.domain.Entities.User;
+import com.example.demo.domain.Entities.UserLoginRequest;
 import com.example.demo.services.UserService;
+
+
 
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
+ 
 
     @Autowired
     UserService userService;
 
+    @PostMapping("/login")
+    public ResponseEntity<ResponseMessage> login(@RequestBody UserLoginRequest userLogin){
+        return userService.login(userLogin.getEmail(), userLogin.getPassword());
+    }
 
     @GetMapping()
     public List<User> getUsers(){
@@ -39,5 +48,5 @@ public class UserController {
         return userService.updateUser(user);
     }
 
-
+   
 }
