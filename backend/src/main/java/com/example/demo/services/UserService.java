@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.domain.ResponseMessage;
+import com.example.demo.domain.response.ResponseMessage;
 import com.example.demo.domain.Entities.User;
 import com.example.demo.repository.UserRepository;
 

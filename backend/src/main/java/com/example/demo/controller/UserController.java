@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.domain.ResponseMessage;
+import com.example.demo.domain.response.ResponseMessage;
 import com.example.demo.domain.Entities.User;
 import com.example.demo.domain.Entities.UserLoginRequest;
 import com.example.demo.services.UserService;
