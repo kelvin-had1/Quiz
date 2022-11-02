@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.lang.Nullable;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -23,6 +25,8 @@ public class Quiz {
     @Column(name = "name")
     private String Name;
 
+
+    @Nullable
     @OneToMany
     private List<Questions> questions;
 

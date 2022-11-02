@@ -17,7 +17,6 @@ import com.example.demo.repository.UserRepository;
 
 import io.jsonwebtoken.Jwts;
 
-
 @Service
 public class UserService {
         

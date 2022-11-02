@@ -13,24 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.domain.response.ResponseMessage;
 import com.example.demo.domain.Entities.User;
-import com.example.demo.domain.Entities.UserLoginRequest;
 import com.example.demo.services.UserService;
-
-
-
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
- 
-
     @Autowired
     UserService userService;
-
-    @PostMapping("/login")
-    public ResponseEntity<ResponseMessage> login(@RequestBody UserLoginRequest userLogin){
-        return userService.login(userLogin.getEmail(), userLogin.getPassword());
-    }
 
     @GetMapping()
     public List<User> getUsers(){

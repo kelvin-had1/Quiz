@@ -1,4 +1,4 @@
-package com.example.demo.domain.Entities;
+package com.example.demo.domain.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
