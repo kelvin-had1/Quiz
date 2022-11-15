@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.domain.Entities.Quiz;
+import com.example.demo.domain.request.QuestionRequest;
 import com.example.demo.domain.request.QuizRequest;
 import com.example.demo.domain.response.ResponseMessage;
 import com.example.demo.services.QuizService;
@@ -23,7 +24,7 @@ public class QuizController {
         return quizService.getUsers();
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public HttpEntity<ResponseMessage> createQuiz(@RequestBody QuizRequest quiz){
         if(quiz.getName().isEmpty()){
             var responseMessage = new ResponseMessage("Name is empty");           
@@ -31,11 +32,12 @@ public class QuizController {
         }
         var response = quizService.createQuiz(quiz.getName());
         return response;
-            
-            
+      
+    }
 
-        
-
-
+    @PostMapping("/{id}/savequestions")
+    public HttpEntity<ResponseMessage> saveQuestions(@PathVariable Long id, @RequestBody List<QuestionRequest> questions){
+        var response = quizService.saveQuestions(id, questions);
+        return response;
     }
 }

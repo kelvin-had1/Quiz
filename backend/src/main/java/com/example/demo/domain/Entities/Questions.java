@@ -39,7 +39,7 @@ public class Questions {
     private String CorrectAnswer;
 
     @JsonIgnore
-    @ManyToOne
+    @ManyToOne    
     private Quiz Quiz;
 
 }

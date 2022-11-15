@@ -27,6 +27,9 @@ public class Quiz {
 
     @Nullable
     @OneToMany
+    @JoinTable(name = "questions",
+            joinColumns = @JoinColumn(name = "quiz_id"),
+            inverseJoinColumns = @JoinColumn(name = "id"))
     private List<Questions> questions;
 
 
