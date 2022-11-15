@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.domain.Entities.Quiz;
 import com.example.demo.domain.request.QuizRequest;
+import com.example.demo.domain.response.ResponseMessage;
 import com.example.demo.services.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -23,11 +24,17 @@ public class QuizController {
     }
 
     @PostMapping
-    public HttpEntity<Quiz> createQuiz(final @RequestBody QuizRequest quiz){
-        if(quiz.getName().isEmpty())
-            return ResponseEntity.status(400).build();
+    public HttpEntity<ResponseMessage> createQuiz(@RequestBody QuizRequest quiz){
+        if(quiz.getName().isEmpty()){
+            var responseMessage = new ResponseMessage("Name is empty");           
+            return ResponseEntity.status(400).body(responseMessage);
+        }
+        var response = quizService.createQuiz(quiz.getName());
+        return response;
+            
+            
 
-        return quizService.createQuiz(quiz.getName());
+        
 
 
     }
