@@ -24,11 +24,9 @@ public class QuizService {
         var quiz = new Quiz();
         quiz.setName(name);
 
-
-        if(quizRepository.findByName(name) != null){
+        if(quizRepository.findByname(name) != null)
             return ResponseEntity.status(400).build();
 
-        }
         quizRepository.save(quiz);
 
 
